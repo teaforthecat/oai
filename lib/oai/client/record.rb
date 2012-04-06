@@ -14,7 +14,8 @@ module OAI
 
     def initialize(element)
       @header = OAI::Header.new xpath_first(element, './/header')
-      @metadata = xpath_first(element, './/metadata')
+      # @metadata = xpath_first(element, './/metadata')
+      @metadata = CdwaLite.new xpath_first(element, './/metadata')
     end
 
     # a convenience method which digs into the header status attribute
