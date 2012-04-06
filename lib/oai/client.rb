@@ -16,6 +16,7 @@ end
 require 'oai/client/metadata_format'
 require 'oai/client/response'
 require 'oai/client/header'
+require 'oai/client/cdwa_lite'
 require 'oai/client/record' 
 require 'oai/client/identify'
 require 'oai/client/get_record'
