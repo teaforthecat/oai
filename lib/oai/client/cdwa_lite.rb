@@ -38,6 +38,7 @@ class CdwaLite
     hash
   end
 
+  # gets rid of REXML::Text objects
   def cast value
     if value.kind_of?(Array)
       value.collect{|item| item.to_s }
