@@ -27,13 +27,13 @@ class CdwaLite
   end
 
 
-  def as_json
+  def as_hash
     hash = {}
     attrs = instance_variables
     attrs.delete(:@element)
     attrs.each do |var|
       key = var.to_s.gsub("@", "")
-      hashy.merge({key => send(key)})
+      hash = hash.merge({key => cast(send(key))})
     end
     hash
   end
