@@ -37,4 +37,12 @@ class CdwaLite
     end
     hash
   end
+
+  def cast value
+    if value.kind_of?(Array)
+      value.collect{|item| item.to_s }
+    else
+      value.to_s
+    end
+  end
 end
