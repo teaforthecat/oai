@@ -2,7 +2,6 @@
 require 'uri'
 require 'net/http'
 require 'cgi'
-require 'iconv'
 
 if not defined?(OAI::Const::VERBS)
   # Shared stuff
