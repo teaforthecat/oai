@@ -1,3 +1,5 @@
+require 'cgi'
+
 class CdwaLite
   attr_accessor :element
   attr_accessor :title, :creator, :date, :materials, :description,
@@ -23,9 +25,10 @@ class CdwaLite
     @image = xpath('cdwalite:cdwalite/cdwalite:resourceWrap/cdwalite:resourceSet/cdwalite:resourceType[contains(text(), "Digital Image")]/../cdwalite:linkResource/text()')
     @related = xpath('cdwalite:cdwalite/cdwalite:resourceWrap/cdwalite:resourceSet/cdwalite:resourceType[contains(text(), "text")]/../cdwalite:resourceID/text()')
     @url = xpath('cdwalite:cdwalite/cdwalite:recordWrap/cdwalite:recordInfoWrap/cdwalite:recordInfoLink/text()')
+    @url = CGI.escape(@url)
+    @image = CGI.escape(@image)
     self
   end
-
 
   def as_hash
     hash = {}
