@@ -3,7 +3,7 @@ require 'uri'
 class CdwaLite
   attr_accessor :element
   attr_accessor :title, :creator, :date, :materials, :description,
-                :subject, :classification, :image, :related, :url
+                :subject, :classification, :image, :images, :related, :url
 
   def initialize(element)
     @element = element
@@ -22,9 +22,10 @@ class CdwaLite
     @description = xpath('cdwalite:cdwalite/cdwalite:descriptiveNoteWrap/cdwalite:descriptiveNoteSet/cdwalite:descriptiveNote/text()')
     @subject = xpath('cdwalite:cdwalite/cdwalite:indexingSubjectWrap/cdwalite:indexingSubjectSet/cdwalite:subjectTerm[@cdwalite:termsource="WAC"]/text()')
     @classification = xpath('cdwalite:cdwalite/cdwalite:classificationWrap/cdwalite:classification[@cdwalite:termsource="WAC"]/text()')
-    @image = xpath('cdwalite:cdwalite/cdwalite:resourceWrap/cdwalite:resourceSet/cdwalite:resourceType[contains(text(), "Digital Image")]/../cdwalite:linkResource/text()')
     @related = xpath('cdwalite:cdwalite/cdwalite:resourceWrap/cdwalite:resourceSet/cdwalite:resourceType[contains(text(), "text")]/../cdwalite:resourceID/text()')
-    @url = xpath('cdwalite:cdwalite/cdwalite:recordWrap/cdwalite:recordInfoWrap/cdwalite:recordInfoLink/text()')
+    @images = xpath('cdwalite:cdwalite/cdwalite:resourceWrap/cdwalite:resourceSet/cdwalite:resourceType[contains(text(), "Digital Image")]/../cdwalite:linkResource/text()')
+    @image = xpath('cdwalite:cdwalite/cdwalite:resourceWrap/cdwalite:resourceSet/cdwalite:resourceType[contains(text(), "Digital Image")]/../cdwalite:linkResource/text()')[0].to_s
+    @url = xpath('cdwalite:cdwalite/cdwalite:recordWrap/cdwalite:recordInfoWrap/cdwalite:recordInfoLink/text()')[0].to_s
     @url = URI.escape(@url)
     @image = URI.escape(@image)
     self
