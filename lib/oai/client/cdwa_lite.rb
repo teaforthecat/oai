@@ -16,6 +16,7 @@ class CdwaLite
 
   def create_from_paths
     @title = xpath('cdwalite:cdwalite/cdwalite:titleWrap/cdwalite:titleSet/cdwalite:title[@cdwalite:pref="preferred"]/text()')
+    @accession = xpath('[@cdwalite:type="accession"]/text()')
     @creator = xpath('cdwalite:cdwalite/cdwalite:displayCreator/text()')
     @date = xpath('cdwalite:cdwalite/cdwalite:indexingDatesWrap/cdwalite:indexingDatesSet/cdwalite:earliestDate/text()')
     @materials = xpath('cdwalite:cdwalite/cdwalite:displayMaterialsTech/text()')
